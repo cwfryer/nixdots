@@ -34,8 +34,8 @@
         # > Our main nixos configuration file <
         modules = [ 
           ./nixos/configuration.nix 
-          inputs.nixos-hardware.nixosModules.microsoft-surface-pro-3
-          inputs.nixos-hardware.nixosModules.microsoft-surface-pro-intel
+          # inputs.nixos-hardware.nixosModules.microsoft-surface-pro-intel
+          # inputs.nixos-hardware.nixosModules.microsoft-surface-pro-3
 	  inputs.nur.nixosModules.nur
         ];
       };

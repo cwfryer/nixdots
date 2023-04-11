@@ -47,6 +47,8 @@
   home.packages = with pkgs; [ 
     obsidian
     zoom-us
+    ripgrep
+    fd
   ];
 
   # Home-Manager programs for user (mipmip.github.io/home-manager-option-search)
