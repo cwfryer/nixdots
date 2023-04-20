@@ -178,7 +178,9 @@
       esac
     '';
 in {
-  scripts.overlay = final: prev: {
-    scripts.sysTools = sysTools;
-  };
+  nixpkgs.overlays = [
+    final: prev: {
+      scripts.sysTools = sysTools;
+    }
+  ];
 }
