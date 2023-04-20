@@ -49,6 +49,7 @@
     zoom-us
     ripgrep
     fd
+    variety
   ];
 
   # Home-Manager programs for user (mipmip.github.io/home-manager-option-search)
@@ -57,80 +58,179 @@
     # neovim = {
     #   enable = true;
     # };
-    neovim-ide.enable = true;
+    neovim-ide = { # my personal neovim flake, from github:cwfryer/neovim-flake
+      enable = true;
+      settings = {
+        vim = {
+          neovim.package = pkgs.neovim-nightly;
+          viAlias = false;
+          vimAlias = true;
+          coding = {
+            enable = true;
+            snippets = {
+              enable = true;
+              useFriendlySnippets = true;
+            };
+            completion = {
+              enable = true;
+              useSuperTab = true;
+              completeFromLSP = true;
+              completeFromBuffer = true;
+              completeFromPath = true;
+              completeFromLuaSnip = true;
+            };
+            helpers = {
+              autoPair = true;
+              surround = true;
+              comment = {
+                enable = true;
+                useTreeSitterContext = true;
+              };
+              betterAISelection = true;
+            };
+          };
+          colorscheme = {
+            set = "oceanicnext";
+            transparent = true;
+          };
+          editor = {
+            enable = true;
+            enableTree = true;
+            improveSearchReplace = true;
+            enableTelescope = true;
+            movement = {
+              enableFlit = true;
+              enableLeap = true;
+            };
+            visuals = {
+              enableGitSigns = true;
+              enableIlluminate = true;
+              betterTODOComments = true;
+            };
+            improveDiagnostics = true;
+            enableFloatingTerminal = true;
+          };
+          keys = {
+            enable = true;
+            whichKey.enable = true;
+          };
+          lsp = {
+            enable = true;
+            extras = {
+              neoconf = true;
+              neodev = true;
+            };
+            autoFormatting = true;
+            languages = {
+              lua = true;
+              nix = true;
+              rust = true;
+              # Uncomment to enable
+              # go = true;
+              # pyton = true;
+              # typescript = true;
+            };
+          };
+          treesitter = {
+            enable = true;
+            textobjects = true;
+          };
+          ui = {
+            enable = true;
+            uiTweaks = {
+              system = "noice.nvim";
+              interfaces = true;
+              icons = true;
+              indents = true;
+            };
+            uiAdditions = {
+              bufferline = true;
+              lualine = {
+                enable = true;
+                improveContext = true;
+              };
+              indents = true;
+              dashboard = "mini.starter";
+            };
+          };
+          util = {
+            enable = true;
+            sessions = true;
+          };
+        };
+      };
+    };
 
     firefox = {
       enable = true;
       package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
         extraPolicies = {
-	  CaptivePortal = false;
-	  DisableFirefoxStudies = true;
-	  DisablePocket = true;
-	  DisableTelemetry = true;
-	  DisableFirefoxAccounts = false;
-	  NoDefaultBookmarks = true;
-	  OfferToSaveLogins = false;
-	  OfferToSaveLoginsDefault = false;
-	  PasswordManagerEnabled = false;
-	  FirefoxHome = {
-	    Search = true;
-	    Pocket = false;
-	    Snippets = false;
-	    TopSites = false;
-	    Highlights = false;
-	  };
-	  UserMessaging = {
-	    ExtensionRecommendations = false;
-	    SkipOnboarding = true;
-	  };
-	};
+          CaptivePortal = false;
+          DisableFirefoxStudies = true;
+          DisablePocket = true;
+          DisableTelemetry = true;
+          DisableFirefoxAccounts = false;
+          NoDefaultBookmarks = true;
+          OfferToSaveLogins = false;
+          OfferToSaveLoginsDefault = false;
+          PasswordManagerEnabled = false;
+          FirefoxHome = {
+            Search = true;
+            Pocket = false;
+            Snippets = false;
+            TopSites = false;
+            Highlights = false;
+          };
+          UserMessaging = {
+            ExtensionRecommendations = false;
+            SkipOnboarding = true;
+          };
+        };
       };
-
-      # ];
       profiles = {
         default = {
-	  id = 0;
-	  isDefault = true;
+          id = 0;
+          isDefault = true;
           extensions = with pkgs.nur.repos.rycee.firefox-addons; [
               ublock-origin
               privacy-badger
               clearurls
-	      facebook-container
-	      multi-account-containers
-	      ninja-cookie
-	      # bypass-paywalls-clean
-	  ];
-	  search = {
-	    force = true;
-	    default = "DuckDuckGo";
-	    engines = {
-	      "Nix Packages" = {
-	        urls = [{
-		  template = "https://search.nixos.org/packages";
-		  params = [
-		    { name = "type"; value = "packages"; }
-		    { name = "query"; value = "{searchTerms}"; }
-		  ];
-		}];
-		icon = "{pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-		definedAliases = [ "@np" ];
-	      };
-	      "NixOS Wiki" = {
-	        urls = [{
-		  template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
-		iconUpdateURL = "https://nixos.wiki/favicon.png";
-		updateInterval = 24 * 60 * 60 * 1000;
-		definedAliases = [ "@nw" ];
-	      };
-	      "Google" = {
-	        urls = [{
-		  template = "https://www.google.com/search?q={searchTerms}";
-		}];
-		definedAliases = [ "@g" ];
-	      };
-	    };
-	  };
-	};
+              facebook-container
+              multi-account-containers
+              ninja-cookie
+              # bypass-paywalls-clean
+          ];
+          search = {
+            force = true;
+            default = "DuckDuckGo";
+            engines = {
+              "Nix Packages" = {
+                urls = [{
+                  template = "https://search.nixos.org/packages";
+                  params = [
+                    { name = "type"; value = "packages"; }
+                    { name = "query"; value = "{searchTerms}"; }
+                  ];
+                }];
+                icon = "{pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+                definedAliases = [ "@np" ];
+              };
+            "NixOS Wiki" = {
+              urls = [{
+                template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
+              iconUpdateURL = "https://nixos.wiki/favicon.png";
+              updateInterval = 24 * 60 * 60 * 1000;
+              definedAliases = [ "@nw" ];
+            };
+              "Google" = {
+                urls = [{
+                  template = "https://www.google.com/search?q={searchTerms}";
+                }];
+                definedAliases = [ "@g" ];
+              };
+            };
+          };
+        };
       };
     };
   };

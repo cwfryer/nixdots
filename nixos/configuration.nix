@@ -10,6 +10,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
+    ./scripts
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
@@ -27,6 +28,7 @@
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
       # })
+      scripts.overlay
     ];
     # Configure your nixpkgs instance
     config = {
@@ -124,6 +126,8 @@
     htop
     gnupg
     rage
+    xclip
+    scripts.sysTools
   ];
 
   # System fonts

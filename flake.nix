@@ -15,10 +15,10 @@
 
     nur.url = "github:nix-community/nur";
 
-    # neovim-nightly = {
-    #   url = "github:nix-community/neovim-nightly-overlay";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    neovim-nightly = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     neovim-flake = {
       url = "git+file:///home/casey/Projects/neovim-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,7 +36,7 @@
           ./nixos/configuration.nix 
           # inputs.nixos-hardware.nixosModules.microsoft-surface-pro-intel
           # inputs.nixos-hardware.nixosModules.microsoft-surface-pro-3
-	  inputs.nur.nixosModules.nur
+          inputs.nur.nixosModules.nur
         ];
       };
     };
@@ -50,7 +50,7 @@
         # > Our main home-manager configuration file <
         modules = [ 
           inputs.nur.hmModules.nur
-	  .home-manager/home.nix 
+	  ./home-manager/home.nix 
 	];
       };
     };
