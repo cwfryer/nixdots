@@ -25,15 +25,21 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, nur, neovim-nightly, ... }@inputs: {
+  outputs = {
+    nixpkgs,
+    home-manager,
+    nur,
+    neovim-nightly,
+    ...
+  } @ inputs: {
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; }; # Pass flake inputs to our config
+        specialArgs = {inherit inputs;}; # Pass flake inputs to our config
         # > Our main nixos configuration file <
-        modules = [ 
-          ./nixos/configuration.nix 
+        modules = [
+          ./nixos/configuration.nix
           # inputs.nixos-hardware.nixosModules.microsoft-surface-pro-intel
           # inputs.nixos-hardware.nixosModules.microsoft-surface-pro-3
           inputs.nur.nixosModules.nur
@@ -46,12 +52,12 @@
     homeConfigurations = {
       "casey@nixos" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = { inherit inputs nur; }; # Pass flake inputs to our config
+        extraSpecialArgs = {inherit inputs nur;}; # Pass flake inputs to our config
         # > Our main home-manager configuration file <
-        modules = [ 
+        modules = [
           inputs.nur.hmModules.nur
-	  ./home-manager/home.nix 
-	];
+          ./home-manager/home.nix
+        ];
       };
     };
   };

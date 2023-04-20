@@ -1,6 +1,9 @@
 {
-  pkgs,
+  inputs,
   lib,
+  config,
+  pkgs,
+  ...
 }: let
   # following script from:
   # https://github.com/wiltaylor/dotfiles/blob/master/roles/core/scripts.nix
@@ -179,8 +182,8 @@
     '';
 in {
   nixpkgs.overlays = [
-    final: prev: {
+    (final: prev: {
       scripts.sysTools = sysTools;
-    }
+    })
   ];
 }

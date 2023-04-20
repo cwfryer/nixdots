@@ -1,7 +1,12 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-
-{ inputs, lib, config, pkgs, ... }: {
+{
+  inputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
@@ -33,7 +38,7 @@
       # Disable if you don't want unfree packages
       allowUnfree = true;
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
-      allowUnfreePredicate = (_: true);
+      allowUnfreePredicate = _: true;
     };
   };
 
@@ -44,7 +49,7 @@
 
   # Add stuff for your user as you see fit:
   # NixOS Packages for user (search.nixos.org)
-  home.packages = with pkgs; [ 
+  home.packages = with pkgs; [
     obsidian
     zoom-us
     ripgrep
@@ -54,11 +59,11 @@
 
   # Home-Manager programs for user (mipmip.github.io/home-manager-option-search)
   programs = {
-
     # neovim = {
     #   enable = true;
     # };
-    neovim-ide = { # my personal neovim flake, from github:cwfryer/neovim-flake
+    neovim-ide = {
+      # my personal neovim flake, from github:cwfryer/neovim-flake
       enable = true;
       settings = {
         vim = {
@@ -192,41 +197,54 @@
           id = 0;
           isDefault = true;
           extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-              ublock-origin
-              privacy-badger
-              clearurls
-              facebook-container
-              multi-account-containers
-              ninja-cookie
-              # bypass-paywalls-clean
+            ublock-origin
+            privacy-badger
+            clearurls
+            facebook-container
+            multi-account-containers
+            ninja-cookie
+            # bypass-paywalls-clean
           ];
           search = {
             force = true;
             default = "DuckDuckGo";
             engines = {
               "Nix Packages" = {
-                urls = [{
-                  template = "https://search.nixos.org/packages";
-                  params = [
-                    { name = "type"; value = "packages"; }
-                    { name = "query"; value = "{searchTerms}"; }
-                  ];
-                }];
+                urls = [
+                  {
+                    template = "https://search.nixos.org/packages";
+                    params = [
+                      {
+                        name = "type";
+                        value = "packages";
+                      }
+                      {
+                        name = "query";
+                        value = "{searchTerms}";
+                      }
+                    ];
+                  }
+                ];
                 icon = "{pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                definedAliases = [ "@np" ];
+                definedAliases = ["@np"];
               };
-            "NixOS Wiki" = {
-              urls = [{
-                template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
-              iconUpdateURL = "https://nixos.wiki/favicon.png";
-              updateInterval = 24 * 60 * 60 * 1000;
-              definedAliases = [ "@nw" ];
-            };
+              "NixOS Wiki" = {
+                urls = [
+                  {
+                    template = "https://nixos.wiki/index.php?search={searchTerms}";
+                  }
+                ];
+                iconUpdateURL = "https://nixos.wiki/favicon.png";
+                updateInterval = 24 * 60 * 60 * 1000;
+                definedAliases = ["@nw"];
+              };
               "Google" = {
-                urls = [{
-                  template = "https://www.google.com/search?q={searchTerms}";
-                }];
-                definedAliases = [ "@g" ];
+                urls = [
+                  {
+                    template = "https://www.google.com/search?q={searchTerms}";
+                  }
+                ];
+                definedAliases = ["@g"];
               };
             };
           };
@@ -243,7 +261,7 @@
     syncthing.enable = true;
     playerctld.enable = true;
   };
-  
+
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
