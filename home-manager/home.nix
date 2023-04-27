@@ -55,6 +55,8 @@
     ripgrep
     fd
     variety
+    android-studio
+    zellij
   ];
 
   # Home-Manager programs for user (mipmip.github.io/home-manager-option-search)
