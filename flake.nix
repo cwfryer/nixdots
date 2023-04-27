@@ -3,7 +3,7 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
@@ -15,10 +15,6 @@
 
     nur.url = "github:nix-community/nur";
 
-    neovim-nightly = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     neovim-flake = {
       url = "git+file:///home/casey/Projects/neovim-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,7 +25,6 @@
     nixpkgs,
     home-manager,
     nur,
-    neovim-nightly,
     ...
   } @ inputs: {
     # NixOS configuration entrypoint

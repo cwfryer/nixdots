@@ -26,6 +26,11 @@
           nix store optimise
         ;;
 
+        "freespace")
+          echo "Removing old generations..."
+          sudo nix-collect-garbage -d
+        ;;
+
         "update")
           echo "Updating nixos flake..."
           pushd ~/nixdots
@@ -167,14 +172,15 @@
           echo ""
           echo "Commands:"
           echo "clean - Garbage collect and hard link nix store"
-          echo "apply - Applies current system configuration in dotfiles."
-          echo "apply-user - Applies current home manager configuration in dotfiles."
-          echo "update - Updates dotfiles flake."
+          echo "freespace - Delete previous generations up to current"
+          echo "apply - Applies current system configuration in dotfiles"
+          echo "apply-user - Applies current home manager configuration in dotfiles"
+          echo "update - Updates dotfiles flake"
           echo "index - Updates index of nix used for exec (nix-index)"
           echo "find [--overlay] - Find a nix package (overlay for custom packages)"
           echo "find-doc - Finds documentation on a config item"
           echo "find-cmd - Finds the package a command is in"
-          echo "installed - Lists all installed packages."
+          echo "installed - Lists all installed packages"
           echo "which - Prints the closure of target file"
           echo "exec - executes a command"
         ;;

@@ -69,7 +69,6 @@
       enable = true;
       settings = {
         vim = {
-          neovim.package = pkgs.neovim-nightly;
           viAlias = false;
           vimAlias = true;
           coding = {
