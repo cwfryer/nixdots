@@ -57,6 +57,7 @@
     variety
     android-studio
     zellij
+    starship
   ];
 
   # Home-Manager programs for user (mipmip.github.io/home-manager-option-search)
@@ -251,6 +252,10 @@
           };
         };
       };
+    };
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
     };
   };
 
