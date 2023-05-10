@@ -98,6 +98,9 @@
     #media-session.enable = true;
   };
 
+  # Docker
+  virtualisation.docker.enable = true;
+
   users.users = {
     casey = {
       initialPassword = "#name?butofcourse";
@@ -106,7 +109,7 @@
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
-      extraGroups = ["wheel" "networkmanager"];
+      extraGroups = ["wheel" "networkmanager" "docker"];
     };
   };
 

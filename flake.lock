@@ -264,11 +264,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1682977601,
-        "narHash": "sha256-F1Va/Uiw2tVNn27FLqWyBkiqDyIm/eCamw9wA/GK8Fw=",
+        "lastModified": 1683212293,
+        "narHash": "sha256-kbESBAW+TmP5nUKeeHzpXLb11ntdFVTR69pnRCsTVbo=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "0e4c33d76006c9080d2f228ba1c2308e3e4d7be6",
+        "rev": "ae6d5466bf3ee61f5565f1631a787a7eda68c99d",
         "type": "github"
       },
       "original": {
@@ -629,8 +629,11 @@
         "which-key": "which-key"
       },
       "locked": {
-        "lastModified": 1683068719,
-        "narHash": "sha256-KoIRFrcf9b2RKaoMgwfX0k27COXHhtagwHgRMWB2unI=",
+        "lastModified": 1683127887,
+        "narHash": "sha256-cSzpRobbWvplbg8taPA6V68+8VmQ7KN5xKDXmBd0vqs=",
+        "ref": "refs/heads/main",
+        "rev": "53b351ef0fe48029b0b9245432fd5e163df388db",
+        "revCount": 206,
         "type": "git",
         "url": "file:///home/casey/Projects/neovim-flake"
       },
@@ -802,11 +805,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1683067464,
-        "narHash": "sha256-vodCb2YbRhDQfE8d9nvfY4zwJJofII2FXwuU9MHJ7Wc=",
+        "lastModified": 1683213056,
+        "narHash": "sha256-pFezXgOEqC+ykIEl26iKDTzdMF0oxLHGNz2C+H14RjY=",
         "owner": "nix-community",
         "repo": "nur",
-        "rev": "1aa969c5e57c76ec8b78e0d21fde0090317eb5a1",
+        "rev": "7e8650cf100a41b938d4557823b0c3ab409200e5",
         "type": "github"
       },
       "original": {
