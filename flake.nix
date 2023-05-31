@@ -17,7 +17,6 @@
 
     neovim-flake = {
       url = "git+file:///home/casey/Projects/neovim-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
