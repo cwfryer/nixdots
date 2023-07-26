@@ -136,6 +136,7 @@
     xclip
     nix-index
     scripts.sysTools
+    scripts.devTools
   ];
 
   # System fonts

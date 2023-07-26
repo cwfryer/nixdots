@@ -55,7 +55,7 @@
     ripgrep
     fd
     variety
-    android-studio
+    # android-studio
     zellij
     starship
   ];
@@ -134,8 +134,9 @@
               rust = true;
               # Uncomment to enable
               # go = true;
-              # pyton = true;
+              # python = true;
               # typescript = true;
+              html = true;
             };
           };
           treesitter = {

@@ -28,6 +28,7 @@
 
         "freespace")
           echo "Removing old generations..."
+          nix-collect-garbage -d
           sudo nix-collect-garbage -d
         ;;
 
@@ -186,10 +187,126 @@
         ;;
       esac
     '';
+
+  devTools = with pkgs;
+    writeScriptBin "denv" ''
+      #!${runtimeShell}
+
+      case $1 in
+        "init")
+          case $2 in
+            "csharp")
+              nix flake init --template github:cwfryer/dev-templates#$2
+            ;;
+            "elixir")
+              nix flake init --template github:cwfryer/dev-templates#$2
+            ;;
+            "go")
+              nix flake init --template github:cwfryer/dev-templates#$2
+            ;;
+            "haskell")
+              nix flake init --template github:cwfryer/dev-templates#$2
+            ;;
+            "kotlin")
+              nix flake init --template github:cwfryer/dev-templates#$2
+            ;;
+            "nix")
+              nix flake init --template github:cwfryer/dev-templates#$2
+            ;;
+            "ocaml")
+              nix flake init --template github:cwfryer/dev-templates#$2
+            ;;
+            "python")
+              nix flake init --template github:cwfryer/dev-templates#$2
+            ;;
+            "ruby")
+              nix flake init --template github:cwfryer/dev-templates#$2
+            ;;
+            "rust")
+              nix flake init --template github:cwfryer/dev-templates#$2
+            ;;
+            "shell")
+              nix flake init --template github:cwfryer/dev-templates#$2
+            ;;
+            "zig")
+              nix flake init --template github:cwfryer/dev-templates#$2
+            ;;
+            "*")
+              echo "Unknown language, initializing generic template"
+              nix flake init --template github:cwfryer/dev-templates#generic
+            ;;
+          esac
+          direnv allow
+        ;;
+
+        "replace")
+          rm flake.nix
+          case $2 in
+            "csharp")
+              nix flake init --template github:cwfryer/dev-templates#$2
+            ;;
+            "elixir")
+              nix flake init --template github:cwfryer/dev-templates#$2
+            ;;
+            "go")
+              nix flake init --template github:cwfryer/dev-templates#$2
+            ;;
+            "haskell")
+              nix flake init --template github:cwfryer/dev-templates#$2
+            ;;
+            "kotlin")
+              nix flake init --template github:cwfryer/dev-templates#$2
+            ;;
+            "nix")
+              nix flake init --template github:cwfryer/dev-templates#$2
+            ;;
+            "ocaml")
+              nix flake init --template github:cwfryer/dev-templates#$2
+            ;;
+            "python")
+              nix flake init --template github:cwfryer/dev-templates#$2
+            ;;
+            "ruby")
+              nix flake init --template github:cwfryer/dev-templates#$2
+            ;;
+            "rust")
+              nix flake init --template github:cwfryer/dev-templates#$2
+            ;;
+            "shell")
+              nix flake init --template github:cwfryer/dev-templates#$2
+            ;;
+            "zig")
+              nix flake init --template github:cwfryer/dev-templates#$2
+            ;;
+            "*")
+              echo "Unknown language, initializing generic template"
+              nix flake init --template github:cwfryer/dev-templates#generic
+            ;;
+          esac
+        ;;
+
+        "delete")
+          rm flake.nix
+          rm flake.lock
+          rm .envrc
+        ;;
+
+        *)
+          echo "Usage:"
+          echo "denv command works in the current directory"
+          echo ""
+          echo "Commands:"
+          echo "init - Initializes a nix flake direnv for the specified language"
+          echo "replace - Replaces the existing flake.nix with the specified language template"
+          echo "delete - Deletes the flake.nix and .envrc files"
+        ;;
+      esac
+    '';
 in {
   nixpkgs.overlays = [
     (final: prev: {
       scripts.sysTools = sysTools;
+      scripts.devTools = devTools;
     })
   ];
 }
