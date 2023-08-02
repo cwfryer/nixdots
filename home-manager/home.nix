@@ -134,6 +134,7 @@
               rust = true;
               # Uncomment to enable
               # go = true;
+              ocaml = true;
               # python = true;
               # typescript = true;
               html = true;
