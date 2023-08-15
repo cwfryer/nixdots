@@ -139,6 +139,11 @@
     scripts.devTools
   ];
 
+  # Firefox touch scrolling
+  environment.sessionVariables = {
+    MOZ_USE_XINPUT2 = "1";
+  };
+
   # System fonts
   fonts.packages = with pkgs; [
     (nerdfonts.override {fonts = ["CascadiaCode" "Overpass"];})
