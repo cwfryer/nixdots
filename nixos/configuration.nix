@@ -63,7 +63,7 @@
   # Boot loader setup
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  # boot.loader.efi.efiSysMountPoint = "/boot/EFI";
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -138,11 +138,6 @@
     scripts.sysTools
     scripts.devTools
   ];
-
-  # Firefox touch scrolling
-  environment.sessionVariables = {
-    MOZ_USE_XINPUT2 = "1";
-  };
 
   # System fonts
   fonts.packages = with pkgs; [

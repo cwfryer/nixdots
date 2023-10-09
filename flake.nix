@@ -16,7 +16,7 @@
     nur.url = "github:nix-community/nur";
 
     neovim-flake = {
-      url = "git+file:///home/casey/Projects/neovim-flake";
+      url = "github:cwfryer/neovim-flake";
     };
   };
 
