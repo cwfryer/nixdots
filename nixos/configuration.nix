@@ -123,6 +123,11 @@
   #   passwordAuthentication = false;
   # };
 
+  # Setup gnugp agent
+  programs.gnupg.agent = {
+    enable = true;
+  };
+
   # System packages
   environment.systemPackages = with pkgs; [
     vim
