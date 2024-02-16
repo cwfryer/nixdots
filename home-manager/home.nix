@@ -129,15 +129,21 @@
             };
             autoFormatting = true;
             languages = {
-              lua = true;
-              nix = true;
-              rust = true;
+              lua.enable = true;
+              lua.embedLSP = true;
+              nix.enable = true;
+              nix.embedLSP = true;
+              rust.enable = true;
+              rust.embedLSP = false;
               # Uncomment to enable
               # go = true;
-              ocaml = true;
+              ocaml.enable = true;
+              ocaml.embedLSP = false;
               # python = true;
-              # typescript = true;
-              html = true;
+              typescript.enable = true;
+              typescript.embedLSP = false;
+              html.enable = true;
+              html.embedLSP = false;
             };
           };
           treesitter = {
@@ -207,7 +213,8 @@
             facebook-container
             multi-account-containers
             ninja-cookie
-            # bypass-paywalls-clean
+            bypass-paywalls-clean
+            bitwarden
           ];
           search = {
             force = true;
@@ -274,5 +281,5 @@
   systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "22.11";
+  home.stateVersion = "24.05";
 }
