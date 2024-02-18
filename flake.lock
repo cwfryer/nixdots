@@ -714,11 +714,11 @@
         "which-key": "which-key"
       },
       "locked": {
-        "lastModified": 1708040567,
-        "narHash": "sha256-xjMhBVKqtYcLwDKHSVRrvIC08vxOTCS1NJrUO3fTLZ0=",
+        "lastModified": 1708103598,
+        "narHash": "sha256-/ckLWDsKuVzBVCorbJudMnTb4sbbaIyxNJnOTPESBhg=",
         "owner": "cwfryer",
         "repo": "neovim-flake",
-        "rev": "ad53b473091156248ca04b64e93d4245a511c6ab",
+        "rev": "642d2dad469b78184cb4e574e99d100ada7c8717",
         "type": "github"
       },
       "original": {
